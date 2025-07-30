@@ -1,7 +1,7 @@
 // lib/serverAuth.ts
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
-import prismadb from '@/lib/prsimadb';
+import prismadb from "@/lib/prsimadb";
 
 const serverAuth = async () => {
   const session = await getServerSession(authOptions);
@@ -11,9 +11,7 @@ const serverAuth = async () => {
   }
 
   const currentUser = await prismadb.user.findUnique({
-    where: {
-      email: session.user.email,
-    },
+    where: { email: session.user.email },
   });
 
   if (!currentUser) {
