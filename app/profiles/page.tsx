@@ -1,5 +1,5 @@
 "use client"
-import useCurrentUser from "@/hooks/useCurrentUser/route";
+import useCurrentUser from "@/hooks/useCurrentUser";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
