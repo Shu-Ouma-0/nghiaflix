@@ -3,8 +3,10 @@ import React from "react";
 import { isEmpty } from "lodash";
 import MovieCard from "./MovieCard";
 
+import { Movie } from "@/types/movies";
+
 interface MovieListProps {
-    data: Record<string, any>[];
+    data: Movie[];
     title: string;
 }
 

@@ -5,9 +5,11 @@ import { BsFillPlayFill } from "react-icons/bs";
 import { BiChevronDown } from "react-icons/bi";
 import FavoriteButton from "./FavoriteButton";
 import useInfoModal from "@/hooks/useInfoModal";
+import { Movie } from "@/types/movies";
+import Image from "next/image";
 
 interface MovieCardProps {
-    data: Record<string, any>;
+    data: Movie;
 }
 
 const MovieCard: React.FC<MovieCardProps> = ({
@@ -17,8 +19,15 @@ const MovieCard: React.FC<MovieCardProps> = ({
     const { openModal } = useInfoModal();
 
     return (
-        <div onClick={() => openModal(data?.id)} className="group bg-zinc-900 col-span relative h-[12vw]">
-            <img
+        <div 
+            onClick={() => {
+                if (typeof window !== 'undefined' && window.innerWidth < 768) {
+                openModal(data?.id);
+                }
+            }} 
+            className="group bg-zinc-900 col-span relative h-[12vw]"
+        >
+            <Image
                 className="
                     cursor-pointer
                     object-cover
@@ -32,7 +41,10 @@ const MovieCard: React.FC<MovieCardProps> = ({
                     w-full
                     h-[12vw]
                 "
-                src={data.thumbnailUrl} alt="Thumbnail" 
+                src={data.thumbnailUrl} 
+                alt="Thumbnail"
+                width={500}
+                height={280} 
             />
             <div className="
                     opacity-0
@@ -52,7 +64,7 @@ const MovieCard: React.FC<MovieCardProps> = ({
                     group-hover:opacity-100
                 "
             >
-            <img 
+            <Image 
                 className="
                     cursor-pointer
                     object-cover
@@ -63,7 +75,10 @@ const MovieCard: React.FC<MovieCardProps> = ({
                     w-full
                     h-[12vw]
                 "
-                src={data.thumbnailUrl} alt="Thumbnail"
+                src={data.thumbnailUrl} 
+                alt="Thumbnail"
+                width={500}
+                height={280}
             />
                 <div 
                     className="
