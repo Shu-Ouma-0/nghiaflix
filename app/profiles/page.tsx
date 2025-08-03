@@ -1,6 +1,7 @@
 "use client"
 import useCurrentUser from "@/hooks/useCurrentUser";
 import { useSession } from "next-auth/react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 export default function ProfilesPage() {
@@ -38,7 +39,13 @@ export default function ProfilesPage() {
                                 overflow-hidden
                             "
                         >
-                            <img src="/images/batman.jpg" alt="Profile" />
+                            <Image 
+                                src="/images/batman.jpg"
+                                alt="Profile"
+                                width={176}
+                                height={176}
+                                className="object-cover" 
+                            />
                         </div>
 
                         <div

@@ -6,6 +6,7 @@ import NavbarItem from "./NavbarItem";
 
 import { BsChevronDown, BsSearch, BsBell } from "react-icons/bs";
 import AccountMenu from "./AccountMenu";
+import Image from "next/image";
 
 const TOP_OFFSET = 66;
 
@@ -53,7 +54,7 @@ const Navbar = () => {
                     ${showBackground ? 'bg-zinc-900 bg-opacity-90' : ''}
                 `}
             >
-                <img className="h-4 lg:h-7" src="/images/logo.png" alt="Logo" />
+                <Image className="h-4 lg:h-7" src="/images/logo.png" alt="Logo" width={100} height={40} />
                 <div
                     className="
                         flex-row
@@ -85,7 +86,7 @@ const Navbar = () => {
 
                     <div onClick={toggleAccountMenu} className="flex flex-row items-center gap-2 cursor-pointer relative">
                         <div className="w-6 h-6 lg:w-10 lg:h-10 rounded-md overflow-hidden">
-                            <img src="/images/batman.jpg" alt="" />
+                            <Image src="/images/batman.jpg" alt="Avatar" width={40} height={40} />
                         </div>
                         <BsChevronDown className={`text-white transition ${showAccountMenu ? 'rotate-180' : 'rotate-0'}`} />
                         <AccountMenu visible={showAccountMenu} />
