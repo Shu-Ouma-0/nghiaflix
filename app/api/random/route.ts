@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import prismadb from "@/lib/prsimadb";
 import serverAuth from "@/lib/serverAuth";
 
-export async function GET(req: Request) {
+export async function GET() {
   try {
     await serverAuth(); // Không cần truyền `req` nếu bạn sửa `serverAuth` đúng cách
 
