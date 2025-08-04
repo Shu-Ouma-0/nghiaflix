@@ -2,14 +2,10 @@ import { NextRequest, NextResponse } from "next/server";
 import prismadb from "@/lib/prsimadb";
 import serverAuth from "@/lib/serverAuth";
 
-// Use Next.js built-in types for params
-interface Context {
-  params: {
-    movieId: string;
-  };
-}
-
-export async function GET(req: NextRequest, { params }: Context) {
+export async function GET(
+  req: NextRequest,
+  { params }: { params: { movieId: string } }
+) {
   try {
     await serverAuth();
 
