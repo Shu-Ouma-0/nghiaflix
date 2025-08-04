@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-import type { NextApiRequest } from "next";
 import prismadb from "@/lib/prsimadb";
 import serverAuth from "@/lib/serverAuth";
 
