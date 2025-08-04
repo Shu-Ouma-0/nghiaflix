@@ -1,12 +1,9 @@
 import { NextResponse } from "next/server";
 import prismadb from "@/lib/prsimadb";
 import serverAuth from "@/lib/serverAuth";
+import { NextRequest } from "next/server";
 
-interface Params {
-  params: { movieId: string };
-}
-
-export async function GET(req: Request, { params }: Params) {
+export async function GET(req: NextRequest, { params }: { params: { movieId: string } }) {
   try {
     await serverAuth();
 
