@@ -1,13 +1,16 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import prismadb from "@/lib/prsimadb";
 import serverAuth from "@/lib/serverAuth";
-import { NextRequest } from "next/server";
 
-export async function GET(req: NextRequest, { params }: { params: { movieId: string } }) {
+// đúng cách: dùng type inference từ Next.js App Router
+export async function GET(
+  req: NextRequest,
+  context: { params: { movieId: string } }
+) {
   try {
     await serverAuth();
 
-    const { movieId } = params;
+    const { movieId } = context.params;
 
     if (!movieId || typeof movieId !== "string") {
       return new NextResponse("Invalid ID", { status: 400 });
