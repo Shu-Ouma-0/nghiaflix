@@ -1,15 +1,13 @@
+import { RouteContextWithMovieId } from "@/types/api";
 import { NextRequest, NextResponse } from "next/server";
 import prismadb from "@/lib/prsimadb";
 import serverAuth from "@/lib/serverAuth";
 
-export async function GET(
-  req: NextRequest,
-  { params }: { params: { movieId: string } }
-) {
+export async function GET(req: NextRequest, context: unknown) {
+  const { movieId } = (context as RouteContextWithMovieId).params;
+
   try {
     await serverAuth();
-
-    const { movieId } = params;
 
     if (!movieId || typeof movieId !== "string") {
       return new NextResponse("Invalid ID", { status: 400 });
